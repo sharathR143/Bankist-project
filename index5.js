@@ -27,8 +27,6 @@ const closeModal = function () {
 
 btnsOpenModal.forEach(btn => btn.addEventListener('click', openModal));
 
-// for (let i = 0; i < btnsOpenModal.length; i++)
-//   btnsOpenModal[i].addEventListener('click', openModal);
 
 btnCloseModal.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
@@ -43,40 +41,9 @@ document.addEventListener('keydown', function (e) {
 // Button scrolling
 btnScrollTo.addEventListener('click', function (e) {
   const s1coords = section1.getBoundingClientRect();
-
-  /*
-  console.log(s1coords);
-  console.log(e.target.getBoundingClientRect());
-
-  console.log('current scroll (x/y)', window.pageXOffset, window.pageYOffset);
-
-  console.log(
-    'height/width viewport',
-    document.documentElement.clientHeight,
-    document.documentElement.clientWidth
-  );
-  */
-
-  // window.scrollTo({
-  //   left: s1coords.left + window.pageXOffset,
-  //   top: s1coords.top + window.pageYOffset,
-  //   behavior: 'smooth',
-  // });
-
   section1.scrollIntoView({ behavior: 'smooth' });
 });
 
-//////////////////////////////////////////
-// page navigation
-
-// document.querySelectorAll('.nav__link').forEach(function (el) {
-//   el.addEventListener('click', function (e) {
-//     e.preventDefault();
-//     const id = this.getAttribute('href');
-//     console.log(id);
-//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
-//   });
-// });
 
 /////////////////////////////////////////
 //  Event Delegation implementing page navigation
@@ -139,33 +106,10 @@ const HandlerHover = function (e, opacity) {
 nav.addEventListener('mouseover', HandlerHover.bind(0.5));
 nav.addEventListener('mouseout', HandlerHover.bind(1));
 
-//////////////////////////////////////
-// Sticky  Navigation
 
-// const initialcoords = section1.getBoundingClientRect();
-// console.log(initialcoords);
-// window.addEventListener('scroll', function () {
-//   console.log(window.scrollY);
-//   if (window.scrollY > initialcoords.top) nav.classList.add('sticky');
-//   else nav.classList.remove('sticky');
-// });
 
 ///////////////////////////////////////////
 // sticky navigation:Intersection observer API
-
-// const obscallback = function (entries, observer) {
-//   entries.forEach(entry => {
-//     console.log(entry);
-//   });
-// };
-
-// const obsoption = {
-//   root: null,
-//   threshold: [0, 0.2],
-// };
-
-// const observer = new IntersectionObserver(obscallback, obsoption);
-// observer.observe(section1);
 
 const header = document.querySelector('.header');
 const navheight = nav.getBoundingClientRect().height;
@@ -321,242 +265,6 @@ const slider = function () {
 };
 slider();
 
-/*
-//////////////////////////////////////////
-// Partice example
-// SELECTING ELEMENT
-console.log(document.documentElement); 
-console.log(document.head);
-console.log(document.body);
-
-const header = document.querySelector('.header');
-
-const allsection = document.querySelectorAll('.section');
-console.log(allsection);
-
-document.getElementById('section--1');
-const allbutton = document.getElementsByTagName('button');
-console.log(allbutton);
-
-console.log(document.getElementsByClassName('btn'));
-
-// CREATING AND INSERTING ELEMENTS
-// .insertAdjacentHTML
-
-const message = document.createElement('div');
-message.classList.add('cookie-message');
-// message.textContent =  'We use cookied for improved functionality and analytics.';
-message.innerHTML =
-  'We use cookied for improved functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>';
-
-//it mean move element in last OR first of  header element
-// header.prepend(message);
-header.append(message);
-//header.append(message.cloneNode(true));
-
-// header.before(message);
-// header.after(message);
-
-// DELETE ELEMENT
-
-document
-  .querySelector('.btn--close-cookie')
-  .addEventListener('click', function () {
-    // message.remove();
-    message.parentElement.removeChild(message);
-  });
-////////////////////////////////////////
-*/
-
-/*
-///////////////////////////////////////
-// STYLE
-message.style.backgroundColor = '#37383d';
-message.style.width = '120%';
-
-console.log(message.style.color);
-console.log(message.style.backgroundColor);
-
-console.log(getComputedStyle(message).color);
-console.log(getComputedStyle(message).height);
-
-message.style.height =
-  Number.parseFloat(getComputedStyle(message).height) + 30 + 'px';
-
-document.documentElement.style.setProperty('--color-primary', 'red');
-
-// ATTRIBUTES
-const logo = document.querySelector('.nav__logo');
-console.log(logo.alt);
-// console.log(logo.src);
-console.log(logo.className);
-console.log(logo.id);
-logo.alt = 'Beautiful minimalist logo';
-
-//Non-standard
-console.log(logo.designer);
-console.log(logo.getAttribute('designer'));
-console.log(logo.setAttribute('company', 'Bankist'));
-
-console.log(logo.src);
-console.log(logo.getAttribute('src'));
-
-const link = document.querySelector('.nav__link--btn ');
-console.log(link.href);
-console.log(link.getAttribute('href'));
-
-// Data Attributes
-console.log(logo.dataset.versionNumber);
-
-// Classes
-logo.classList.add('c');
-logo.classList.remove('c');
-logo.classList.toggle('c');
-logo.classList.contains('c'); // NOT includes
-
-//  Don't use
-logo.className = 'sharath';
-////////////////////////////////////////
-*/
-
-/*
-////////////////////////////////////////
-// Implement Smooth scrolling
-//////////////////////////////////////
-
-const btnScrollTo = document.querySelector('.btn--scroll-to');
-const section1 = document.querySelector('#section--1');
-
-btnScrollTo.addEventListener('click', function (e) {
-  const s1coords = section1.getBoundingClientRect();
-
-  console.log(s1coords);
-  console.log(e.target.getBoundingClientRect());
-
-  console.log('current scroll (x/y)', window.pageXOffset, window.pageYOffset);
-
-  console.log(
-    'height/width viewport',
-    document.documentElement.clientHeight,
-    document.documentElement.clientWidth
-  );
-
-  // Scrolling
-  // methhod 1
-
-  // window.scrollTo(
-  //   s1coords.left + window.pageXOffset,
-  //   s1coords.top + window.pageYOffset
-  // );
-
-  // old  ways
-  // method  2
-
-  // window.scrollTo({
-  //   left: s1coords.left + window.pageXOffset,
-  //   top: s1coords.top + window.pageYOffset,
-  //   behavior: 'smooth',
-  // });
-
-  // method 3
-  section1.scrollIntoView({ behavior: 'smooth' });
-});
-/////////////////////////////////////////
-*/
-
-/*
-/////////////////////////////////////////
-// Types of Events and Event Handlers
-
-const h1 = document.querySelector('h1');
-
-const alert1 = function (e) {
-  alert('addEventlistener:guest! you are reading :D');
-  // remove method use to one time use event
-  // h1.removeEventListener('mouseenter', alert1);
-};
-h1.addEventListener('mouseenter', alert1);
-
-setTimeout(() => h1.removeEventListener('mouseenter', alert1), 3000);
-
-// h1.onmouseenter = function (e) {
-//   alert('addEventlistener:guest! you are reading :D');
-// };
-
-//////////////////////////////////////////
-*/
-
-/*
-/////////////////////////////////////////
-// BUBLLING  PHASE
-// Event propagation
-
-// it means click the child event and go  to parent also
-// it means click the parent event and go  to parent only
-
-// rgb(255,255,255)
-
-const randomint = (min, max) =>
-  Math.floor(Math.random() * (max - min + 1) + min);
-
-const randomcolor = () =>
-  `rgb(${randomint(0, 255)},${randomint(0, 255)},${randomint(0, 255)})`;
-
-document.querySelector('.nav__link').addEventListener('click', function (e) {
-  this.style.backgroundColor = randomcolor();
-  console.log('link', e.target, e.currentTarget);
-  console.log(e.currentTarget === this);
-
-  // stop propagation
-  // e.stopPropagation();
-});
-
-document.querySelector('.nav__links').addEventListener('click', function (e) {
-  this.style.backgroundColor = randomcolor();
-  console.log('container', e.target, e.currentTarget);
-});
-
-document.querySelector('.nav').addEventListener('click', function (e) {
-  this.style.backgroundColor = randomcolor();
-  console.log('nav', e.target, e.currentTarget);
-});
-///////////////////////////////////////////
-*/
-
-/*
-//////////////////////////////////////////
-// DOM TRAVERSING
-
-const h1 = document.querySelector('h1');
-
-// going downwards: child
-console.log(h1.querySelectorAll('.highlight'));
-console.log(h1.childNodes);
-console.log(h1.children);
-h1.firstElementChild.style.color = 'white';
-h1.lastElementChild.style.color = 'red';
-
-// Going upwards:parent
-console.log(h1.parentElement);
-console.log(h1.parentNode);
-
-h1.closest('.header').style.background = 'var(--gradient-secondary)';
-
-h1.closest('h1').style.background = 'var(--gradient-primary)';
-
-// going sideways: sibling
-console.log(h1.previousElementSibling);
-console.log(h1.nextElementSibling);
-
-console.log(h1.previousSibling);
-console.log(h1.nextSibling);
-
-console.log(h1.parentElement.children);
-[...h1.parentElement.children].forEach(function (e) {
-  if (e !== h1) e.style.transform = 'scale(0.5)';
-});
-////////////////////////////////////////
-*/
 
 document.addEventListener('DOMContentLoaded', function (e) {
   console.log('HTML parsed and DOM tree bulit', e);
@@ -566,8 +274,3 @@ window.addEventListener('load', function (e) {
   console.log('page fully loaded', e);
 });
 
-// window.addEventListener('beforeunload', function (e) {
-//   e.preventDefault();
-//   console.log(e);
-//   e.returnValue = '';
-// });
